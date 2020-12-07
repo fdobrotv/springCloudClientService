@@ -8,12 +8,26 @@ Java 15
 
 Gradle 6.6+
 
+### Host name aliases in hosts file
+cat `127.0.0.1 client-service-1.com
+127.0.0.1 client-service-2.com
+127.0.0.1 client-service-3.com` >> /etc/hosts
+
 ## Usage examples
 `curl -v 'http://localhost:9988/getInfo'`
 
 `curl -v 'http://localhost:9988/message'`
 
-## Build and run replicated
+## Build and run
+
+### By docker-compose with discovery - REPLICATED
+1 - Run `docker-compose up` of https://github.com/fdobrotv/springDiscoveryService
+2 - Run `docker-compose up` of https://github.com/fdobrotv/springConfigurationService
+3 - Run `docker-compose up` of https://github.com/fdobrotv/springCloudGateway
+
+4 - `docker-compose up`
+
+### Standalone
 `gradlew bootRun`
 
 ### TODO
