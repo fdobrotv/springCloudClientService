@@ -1,0 +1,26 @@
+server:
+  port: 9997
+
+spring:
+  application:
+    name: client-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: configuration-service
+      failFast: true
+
+#For curl localhost:9988/actuator/refresh -d {} -H "Content-Type: application/json"
+management:
+  endpoints:
+    web:
+      exposure:
+        include=*:
+eureka:
+  instance:
+    hostname: ${HOST_NAME:client-service-1.com}
+    homePageUrl: http://${eureka.instance.hostname}/
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://discovery-service-1.com:8761/eureka/}

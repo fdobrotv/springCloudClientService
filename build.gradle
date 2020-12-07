@@ -1,0 +1,64 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.0'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'com.fdobrotv'
+version = '0.1.0'
+sourceCompatibility = '15'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+ext {
+	set('springCloudVersion', "2020.0.0-M6")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
+	//For legacy support of the bootstrap.yml instead of Vault
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+
+	//We need to have some embedded container for work continuously
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//Registration/discovery service client
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+	//TODO: Client-side load balancer
+//	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+
+	//TODO: HTTP client binder inspired by Retrofit, JAXRS-2.0, and WebSocket.
+//	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
+	//TODO: Auto-configuration for distributed tracing
+//	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+
+	//Lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
