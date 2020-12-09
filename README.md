@@ -11,7 +11,8 @@ Gradle 6.6+
 ### Host name aliases in hosts file
 cat `127.0.0.1 client-service-1.com
 127.0.0.1 client-service-2.com
-127.0.0.1 client-service-3.com` >> /etc/hosts
+127.0.0.1 client-service-3.com
+127.0.0.1 tracing-service-1.com` >> /etc/hosts
 
 ## Usage examples
 `curl -v 'http://localhost:9988/getInfo'`

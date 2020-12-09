@@ -10,6 +10,8 @@ spring:
         enabled: true
         serviceId: ${CONFIGURATION_SERVICE_ID:configuration-service}
       failFast: true
+      retry:
+        max-attempts: 60
 
 #For curl localhost:9988/actuator/refresh -d {} -H "Content-Type: application/json"
 management:
@@ -25,3 +27,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_DEFAULT_ZONE:http://discovery-service-1.com:8761/eureka/}
+
+#Uncomment for Spring Retry debug
+#logging.level:
+#  org.springframework.retry: trace

@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.fdobrotv'
-version = '0.3.1'
+version = '0.3.6'
 sourceCompatibility = '15'
 
 configurations {
@@ -38,6 +38,10 @@ dependencies {
 
 	//Registration/discovery service client
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+	//Spring retry
+	implementation 'org.springframework.retry:spring-retry'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 	//TODO: Client-side load balancer
 //	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
