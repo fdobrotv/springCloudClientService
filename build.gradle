@@ -39,6 +39,10 @@ dependencies {
 	//Registration/discovery service client
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
+	implementation("io.springfox:springfox-boot-starter:3.0.0") {
+		exclude group: "io.springfox", module: "springfox-swagger-ui"
+	}
+
 	//TODO: Client-side load balancer
 //	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
 
