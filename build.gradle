@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.fdobrotv'
-version = '0.2.0'
+version = '0.3.6'
 sourceCompatibility = '15'
 
 configurations {
@@ -42,6 +42,9 @@ dependencies {
 	implementation("io.springfox:springfox-boot-starter:3.0.0") {
 		exclude group: "io.springfox", module: "springfox-swagger-ui"
 	}
+	//Spring retry
+	implementation 'org.springframework.retry:spring-retry'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 	//TODO: Client-side load balancer
 //	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'

@@ -7,15 +7,21 @@ networks:
     name: backend
     driver: bridge
 
+x-app-name: &APP_NAME
+  fdobrotv/client_service:0.3.1
+
+x-eureka-zone: &EUREKA_ZONE
+  http://discovery-service-1.com:8761/eureka/,http://discovery-service-2.com:8762/eureka/,http://discovery-service-3.com:8763/eureka/
+
 services:
   client-service-1.com:
-    image: fdobrotv/client_service:0.2.0
+    image: *APP_NAME
     hostname: 'client-service-1.com'
     environment:
       APPLICATION_NAME: client-service
       SERVER_PORT: 7777
       HOST_NAME: client-service-1.com
-      EUREKA_DEFAULT_ZONE: http://discovery-service-1.com:8761/eureka/,http://discovery-service-2.com:8762/eureka/,http://discovery-service-3.com:8763/eureka/
+      EUREKA_DEFAULT_ZONE: *EUREKA_ZONE
       CONFIGURATION_SERVICE_ID: configuration-service
     networks:
       - backend
@@ -23,13 +29,13 @@ services:
       - "7777:7777"
 
   client-service-2.com:
-    image: fdobrotv/client_service:0.2.0
+    image: *APP_NAME
     hostname: 'client-service-2.com'
     environment:
       APPLICATION_NAME: client-service
       SERVER_PORT: 7778
       HOST_NAME: client-service-2.com
-      EUREKA_DEFAULT_ZONE: http://discovery-service-1.com:8761/eureka/,http://discovery-service-2.com:8762/eureka/,http://discovery-service-3.com:8763/eureka/
+      EUREKA_DEFAULT_ZONE: *EUREKA_ZONE
       CONFIGURATION_SERVICE_ID: configuration-service
     networks:
       - backend
@@ -37,13 +43,13 @@ services:
       - "7778:7778"
 
   client-service-3.com:
-    image: fdobrotv/client_service:0.2.0
+    image: *APP_NAME
     hostname: 'client-service-3.com'
     environment:
       APPLICATION_NAME: client-service
       SERVER_PORT: 7779
       HOST_NAME: client-service-3.com
-      EUREKA_DEFAULT_ZONE: http://discovery-service-1.com:8761/eureka/,http://discovery-service-2.com:8762/eureka/,http://discovery-service-3.com:8763/eureka/
+      EUREKA_DEFAULT_ZONE: *EUREKA_ZONE
       CONFIGURATION_SERVICE_ID: configuration-service
     networks:
       - backend
