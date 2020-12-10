@@ -2,9 +2,12 @@ package com.fdobrotv.client_service.controller;
 
 import com.fdobrotv.client_service.model.Pair;
 import com.fdobrotv.client_service.service.PairService;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.cloud.sleuth.annotation.ContinueSpan;
 import org.springframework.cloud.sleuth.annotation.NewSpan;
@@ -15,7 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
+import java.net.URI;
 import java.time.Duration;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TracingTestController {
@@ -28,7 +34,8 @@ public class TracingTestController {
     @Autowired
     private Tracer tracer;
 
-    WebClient webClient = WebClient.create("http://localhost:11111");
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @RequestMapping("/chaining")
     @ContinueSpan
@@ -40,7 +47,15 @@ public class TracingTestController {
     @NewSpan("chainingSomeReactive")
     private Flux<Pair> callWithDelay() {
         log.info("active span: " + tracer.currentSpan());
-        return webClient.get().uri("/byValueReactive?maxValue=1").retrieve().bodyToFlux(Pair.class).checkpoint();
+        List<ServiceInstance> instances = discoveryClient.getInstances("gateway-service");
+        instances.forEach((ServiceInstance s) -> {
+            log.info(ToStringBuilder.reflectionToString(s));
+        });
+        Optional<ServiceInstance> firstInstantOptional = instances.stream().findFirst();
+        ServiceInstance serviceInstance = firstInstantOptional.orElseThrow(RuntimeException::new);
+        URI instanceUri = serviceInstance.getUri();
+        log.trace("instanceUri of Gateway is " + instanceUri);
+        return WebClient.create(instanceUri + "/clientService").get().uri("/byValueReactive?maxValue=1").retrieve().bodyToFlux(Pair.class).checkpoint();
     }
 
     @GetMapping("/byValueReactive")

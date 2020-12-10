@@ -36,6 +36,9 @@ eureka:
     serviceUrl:
       defaultZone: ${EUREKA_DEFAULT_ZONE:http://discovery-service-1.com:8761/eureka/}
 
+logging.level:
+  com.fdobrotv: trace
+
 #Uncomment for Spring Retry debug
 #logging.level:
 #  org.springframework.retry: trace
