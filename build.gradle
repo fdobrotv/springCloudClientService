@@ -39,6 +39,9 @@ dependencies {
 	//Registration/discovery service client
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
+	implementation("io.springfox:springfox-boot-starter:3.0.0") {
+		exclude group: "io.springfox", module: "springfox-swagger-ui"
+	}
 	//Spring retry
 	implementation 'org.springframework.retry:spring-retry'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
