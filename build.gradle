@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.fdobrotv'
-version = '0.3.6'
+version = '0.4.0'
 sourceCompatibility = '15'
 
 configurations {
@@ -43,20 +43,25 @@ dependencies {
 	implementation 'org.springframework.retry:spring-retry'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 
+	//Spring reactive
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
 	//TODO: Client-side load balancer
 //	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
 
 	//TODO: HTTP client binder inspired by Retrofit, JAXRS-2.0, and WebSocket.
 //	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
-	//TODO: Auto-configuration for distributed tracing
-//	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+	//Auto-configuration for distributed tracing
+	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+	implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
 
 	//Lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
 }
 
 dependencyManagement {

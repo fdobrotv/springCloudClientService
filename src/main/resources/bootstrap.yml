@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT:7777}
+  port: ${SERVER_PORT:11111}
 
 spring:
   application:
@@ -12,6 +12,14 @@ spring:
       failFast: true
       retry:
         max-attempts: 60
+  sleuth:
+    traceId128: true
+    sampler:
+      probability: 1.0
+    opentracing:
+      enabled: true
+  zipkin:
+    base-url: http://tracing-service-1.com:9411
 
 #For curl localhost:9988/actuator/refresh -d {} -H "Content-Type: application/json"
 management:
