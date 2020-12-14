@@ -4,6 +4,7 @@ plugins {
 	id 'java'
 	id 'idea'
 	id 'com.google.cloud.tools.jib' version '2.7.0'
+	id "org.openapi.generator" version '4.3.1'
 }
 
 group = 'com.fdobrotv'
@@ -42,6 +43,8 @@ dependencies {
 	implementation("io.springfox:springfox-boot-starter:3.0.0") {
 		exclude group: "io.springfox", module: "springfox-swagger-ui"
 	}
+	implementation 'org.openapitools:jackson-databind-nullable:0.2.0'
+
 	//Spring retry
 	implementation 'org.springframework.retry:spring-retry'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
@@ -86,3 +89,21 @@ jib {
 		tags = ["$version", 'latest']
 	}
 }
+
+openApiGenerate {
+	generatorName = "spring"
+	inputSpec = "http://gateway-service-1.com:8080/specs/v1/products-api.yaml"
+	outputDir = "$projectDir".toString()
+	apiPackage = "com.fdobrotv.client_service.v1"
+	packageName = "com.fdobrotv.client_service.v1.controller"
+	modelPackage = "com.fdobrotv.client_service.v1.dto"
+	validateSpec = true
+	ignoreFileOverride = "$projectDir/.openapi-generator-ignore"
+	configOptions = [
+			hideGenerationTimestamp: "true",
+			dateLibrary: "java8",
+			interfaceOnly: "true"
+	]
+}
+
+compileJava.dependsOn.tasks.openApiGenerate
