@@ -5,7 +5,6 @@
  */
 package com.fdobrotv.client_service.v1;
 
-import com.fdobrotv.client_service.v1.dto.Product;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -41,22 +40,13 @@ public interface ProductsApi {
      *
      * @return OK (status code 200)
      */
-    @ApiOperation(value = "Get all products", nickname = "getProducts", notes = "", response = Product.class, tags={ "Product", })
+    @ApiOperation(value = "Get all products", nickname = "getProducts", notes = "", response = Object.class, tags={ "Product", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Product.class) })
+        @ApiResponse(code = 200, message = "OK", response = Object.class) })
     @RequestMapping(value = "/products",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<Product> getProducts() {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"price\" : 12.15, \"name\" : \"Фрукт\", \"id\" : \"3afe5b11-152c-46de-963b-8655dbc8602b\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
+    default ResponseEntity<Object> getProducts() {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

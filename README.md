@@ -29,6 +29,8 @@ cat `127.0.0.1 client-service-1.com
 4 - `docker-compose up`
 
 ### Standalone
+- Requires running gateway for successful OpenApi specs generation
+
 `gradlew bootRun`
 
 ### TODO
