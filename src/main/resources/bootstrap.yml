@@ -12,6 +12,7 @@ spring:
       failFast: true
       retry:
         max-attempts: 60
+      token: 00000000-0000-0000-0000-000000000000
   sleuth:
     traceId128: true
     sampler:
