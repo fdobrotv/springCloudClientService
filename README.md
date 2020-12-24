@@ -25,6 +25,8 @@ cat `127.0.0.1 client-service-1.com
 Run `docker-compose up` of https://github.com/fdobrotv/springMicroserviceEcosystem
 
 ### Standalone
+- Requires running gateway for successful OpenApi specs generation
+
 `gradlew bootRun`
 
 ### TODO
