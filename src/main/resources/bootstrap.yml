@@ -20,6 +20,14 @@ spring:
       enabled: true
   zipkin:
     base-url: http://tracing-service-1.com:9411
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:postgresql://localhost:26257/defaultdb?ssl=true&sslmode=disable
+    username: root
+  liquibase:
+    changeLog: "classpath:db/changelog/db.changelog-master.yaml"
 
 #For curl localhost:9988/actuator/refresh -d {} -H "Content-Type: application/json"
 management:
@@ -38,6 +46,7 @@ eureka:
 
 logging.level:
   com.fdobrotv: trace
+  "liquibase" : info
 
 #Uncomment for Spring Retry debug
 #logging.level:

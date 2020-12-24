@@ -4,6 +4,9 @@ plugins {
 	id 'java'
 	id 'idea'
 	id 'com.google.cloud.tools.jib' version '2.7.0'
+
+	//TODO: use a Liquibase plugin
+//	id 'org.liquibase.gradle' version '2.0.4'
 }
 
 group = 'com.fdobrotv'
@@ -42,12 +45,24 @@ dependencies {
 	implementation("io.springfox:springfox-boot-starter:3.0.0") {
 		exclude group: "io.springfox", module: "springfox-swagger-ui"
 	}
+
 	//Spring retry
 	implementation 'org.springframework.retry:spring-retry'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 	//Spring reactive
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	//DB schema change management
+	implementation 'org.liquibase:liquibase-core:4.2.2'
+	implementation 'org.liquibase:liquibase-groovy-dsl:3.0.0'
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
+
+	//Jpa
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	//Postgres and CockroachDB
+	implementation 'org.postgresql:postgresql:42.2.18'
 
 	//TODO: Client-side load balancer
 //	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'

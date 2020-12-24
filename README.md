@@ -22,11 +22,7 @@ cat `127.0.0.1 client-service-1.com
 ## Build and run
 
 ### By docker-compose with discovery - REPLICATED
-1 - Run `docker-compose up` of https://github.com/fdobrotv/springDiscoveryService
-2 - Run `docker-compose up` of https://github.com/fdobrotv/springConfigurationService
-3 - Run `docker-compose up` of https://github.com/fdobrotv/springCloudGateway
-
-4 - `docker-compose up`
+Run `docker-compose up` of https://github.com/fdobrotv/springMicroserviceEcosystem
 
 ### Standalone
 `gradlew bootRun`
