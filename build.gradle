@@ -11,7 +11,7 @@ plugins {
 }
 
 group = 'com.fdobrotv'
-version = '0.4.2'
+version = '0.4.5'
 sourceCompatibility = '15'
 
 configurations {
@@ -33,6 +33,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-client-all'
 
 	//For legacy support of the bootstrap.yml instead of Vault
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
@@ -40,14 +41,11 @@ dependencies {
 	//We need to have some embedded container for work continuously
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
-	//Registration/discovery service client
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-
-	//OpenApi generator and web
 	implementation("io.springfox:springfox-boot-starter:3.0.0") {
 		exclude group: "io.springfox", module: "springfox-swagger-ui"
 	}
 	implementation 'org.openapitools:jackson-databind-nullable:0.2.0'
+	compile 'javax.validation:validation-api:2.0.1.Final'
 
 	//Spring retry
 	implementation 'org.springframework.retry:spring-retry'
