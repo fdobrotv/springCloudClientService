@@ -33,7 +33,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-client-all'
+	//Registration/discovery service client
+	implementation 'org.springframework.cloud:spring-cloud-kubernetes-client-discovery'
 
 	//For legacy support of the bootstrap.yml instead of Vault
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'

@@ -1,4 +1,4 @@
-replicaCount: 1
+replicaCount: 3
 servicePort: 11111
 containerPort: 11111
 image:
@@ -7,6 +7,6 @@ image:
 app:
   name: client-service
   profile: local
-  dbHost: 10.0.2.2 # virtualbox default gateway ( to access host machine from virtualbox )
+  dbHost: 192.168.49.1 # virtualbox default gateway ( to access host machine from virtualbox )
   configurationServiceHost: configuration-service
   tracingServiceHost: tracing-service
