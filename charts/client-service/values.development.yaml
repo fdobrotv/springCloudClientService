@@ -1,0 +1,12 @@
+replicaCount: 3
+servicePort: 11111
+containerPort: 11111
+image:
+  name: fdobrotv/client_service:0.4.5
+  pullPolicy: IfNotPresent
+app:
+  name: client-service
+  profile: dev
+  dbHost: 10.0.2.2 # virtualbox default gateway ( to access host machine from virtualbox )
+  configurationServiceHost: configuration-service
+  tracingServiceHost: tracing-service

@@ -11,7 +11,7 @@ plugins {
 }
 
 group = 'com.fdobrotv'
-version = '0.4.2'
+version = '0.4.5'
 sourceCompatibility = '15'
 
 configurations {
@@ -33,15 +33,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	//Registration/discovery service client
+	implementation 'org.springframework.cloud:spring-cloud-kubernetes-client-discovery'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
 	//For legacy support of the bootstrap.yml instead of Vault
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
 	//We need to have some embedded container for work continuously
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-	//Registration/discovery service client
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
 	//OpenApi generator and web
 	implementation("io.springfox:springfox-boot-starter:3.0.0") {
