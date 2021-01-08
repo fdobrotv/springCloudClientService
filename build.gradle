@@ -43,6 +43,7 @@ dependencies {
 	//We need to have some embedded container for work continuously
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	//OpenApi generator and web
 	implementation("io.springfox:springfox-boot-starter:3.0.0") {
 		exclude group: "io.springfox", module: "springfox-swagger-ui"
 	}
