@@ -21,6 +21,9 @@ cat `127.0.0.1 client-service-1.com
 
 ## Build and run
 
+If you start without `kubernetes` spring profile, eureka discovery client will be used, otherwise kubernetes.
+Obviously you can not use both discovery client implementation together
+
 ### By docker-compose with discovery - REPLICATED
 Run `docker-compose up` of https://github.com/fdobrotv/springMicroserviceEcosystem
 
