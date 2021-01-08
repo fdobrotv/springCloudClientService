@@ -35,6 +35,7 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	//Registration/discovery service client
 	implementation 'org.springframework.cloud:spring-cloud-kubernetes-client-discovery'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
 	//For legacy support of the bootstrap.yml instead of Vault
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'

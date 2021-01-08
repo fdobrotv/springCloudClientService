@@ -5,10 +5,6 @@ spring:
   application:
     name: ${APPLICATION_NAME:client-service}
   cloud:
-    kubernetes:
-      discovery:
-        enabled: false
-      enabled: false
     config:
       uri: http://${CONFIGURATION_SERVICE_HOST:configuration-service.com}:8888
       failFast: true
@@ -22,12 +18,12 @@ spring:
     opentracing:
       enabled: true
   zipkin:
-    base-url: http://tracing-service-1.com:9411
+    base-url: http://${TRACING_SERVICE_HOST:tracing-service-1.com}:9411
   jpa:
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:postgresql://localhost:26257/defaultdb?ssl=true&sslmode=disable
+    url: jdbc:postgresql://${DB_HOST:db-1.com}:26257/defaultdb?ssl=true&sslmode=disable
     username: root
   liquibase:
     changeLog: "classpath:db/changelog/db.changelog-master.yaml"
@@ -38,19 +34,13 @@ management:
     web:
       exposure:
         include=*:
-
-eureka:
-  instance:
-    hostname: ${HOST_NAME:client-service-1.com}
-    homePageUrl: http://${eureka.instance.hostname}/
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_DEFAULT_ZONE:http://discovery-service-1.com:8761/eureka/}
-
 logging.level:
   com.fdobrotv: trace
   "liquibase" : info
 
+eureka:
+  client:
+    enabled: false
 #Uncomment for Spring Retry debug
 #logging.level:
 #  org.springframework.retry: trace
