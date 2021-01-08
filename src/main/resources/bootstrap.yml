@@ -10,7 +10,9 @@ spring:
         enabled: false
       enabled: false
     config:
-      uri: http://${CONFIGURATION_SERVICE_HOST:configuration-service.com}:8888
+      discovery:
+        enabled: true
+        serviceId: ${CONFIGURATION_SERVICE_ID:configuration-service}
       failFast: true
       retry:
         max-attempts: 60
