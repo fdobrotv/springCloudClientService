@@ -47,7 +47,6 @@ dependencies {
 		exclude group: "io.springfox", module: "springfox-swagger-ui"
 	}
 	implementation 'org.openapitools:jackson-databind-nullable:0.2.0'
-	compile 'javax.validation:validation-api:2.0.1.Final'
 
 	//Spring retry
 	implementation 'org.springframework.retry:spring-retry'
