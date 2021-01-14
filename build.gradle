@@ -67,6 +67,9 @@ dependencies {
 	//Postgres and CockroachDB
 	implementation 'org.postgresql:postgresql:42.2.18'
 
+	//Message bus and config propagation
+	implementation 'org.springframework.cloud:spring-cloud-starter-bus-kafka'
+
 	//TODO: Client-side load balancer
 //	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
 
