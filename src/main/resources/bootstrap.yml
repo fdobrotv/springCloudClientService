@@ -5,6 +5,10 @@ spring:
   application:
     name: ${APPLICATION_NAME:client-service}
   cloud:
+    kubernetes:
+      discovery:
+        enabled: false
+      enabled: false
     config:
       discovery:
         enabled: true
@@ -12,6 +16,19 @@ spring:
       failFast: true
       retry:
         max-attempts: 60
+      token: ffa6f30b-041f-445a-9beb-3b42927fab1a
+    bus:
+      id: ${spring.application.name}:${spring.profiles.active}:${random.uuid}
+      enabled: true
+      refresh:
+        enabled: true
+      env:
+        enabled: true
+    stream:
+      kafka:
+        binder:
+          zkNodes: zookeeper-service
+          brokers: message-broker-service
   sleuth:
     traceId128: true
     sampler:
@@ -20,6 +37,14 @@ spring:
       enabled: true
   zipkin:
     base-url: http://tracing-service-1.com:9411
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:postgresql://localhost:26257/defaultdb?ssl=true&sslmode=disable
+    username: root
+  liquibase:
+    changeLog: "classpath:db/changelog/db.changelog-master.yaml"
 
 #For curl localhost:9988/actuator/refresh -d {} -H "Content-Type: application/json"
 management:
@@ -38,6 +63,7 @@ eureka:
 
 logging.level:
   com.fdobrotv: trace
+  "liquibase" : info
 
 #Uncomment for Spring Retry debug
 #logging.level:

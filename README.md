@@ -21,14 +21,15 @@ cat `127.0.0.1 client-service-1.com
 
 ## Build and run
 
-### By docker-compose with discovery - REPLICATED
-1 - Run `docker-compose up` of https://github.com/fdobrotv/springDiscoveryService
-2 - Run `docker-compose up` of https://github.com/fdobrotv/springConfigurationService
-3 - Run `docker-compose up` of https://github.com/fdobrotv/springCloudGateway
+If you start without `kubernetes` spring profile, eureka discovery client will be used, otherwise kubernetes.
+Obviously you can not use both discovery client implementation together
 
-4 - `docker-compose up`
+### By docker-compose with discovery - REPLICATED
+Run `docker-compose up` of https://github.com/fdobrotv/springMicroserviceEcosystem
 
 ### Standalone
+- Requires running gateway for successful OpenApi specs generation
+
 `gradlew bootRun`
 
 ### TODO

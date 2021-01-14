@@ -1,0 +1,46 @@
+server:
+  port: ${SERVER_PORT:11111}
+
+spring:
+  application:
+    name: ${APPLICATION_NAME:client-service}
+  cloud:
+    config:
+      uri: http://${CONFIGURATION_SERVICE_HOST:configuration-service.com}:8888
+      failFast: true
+      retry:
+        max-attempts: 60
+      token: ffa6f30b-041f-445a-9beb-3b42927fab1a
+  sleuth:
+    traceId128: true
+    sampler:
+      probability: 1.0
+    opentracing:
+      enabled: true
+  zipkin:
+    base-url: http://${TRACING_SERVICE_HOST:tracing-service-1.com}:9411
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:db-1.com}:26257/defaultdb?ssl=true&sslmode=disable
+    username: root
+  liquibase:
+    changeLog: "classpath:db/changelog/db.changelog-master.yaml"
+
+#For curl localhost:9988/actuator/refresh -d {} -H "Content-Type: application/json"
+management:
+  endpoints:
+    web:
+      exposure:
+        include=*:
+logging.level:
+  com.fdobrotv: trace
+  "liquibase" : info
+
+eureka:
+  client:
+    enabled: false
+#Uncomment for Spring Retry debug
+#logging.level:
+#  org.springframework.retry: trace
