@@ -2,11 +2,12 @@ replicaCount: 3
 servicePort: 22222
 containerPort: 22222
 image:
-  name: fdobrotv/client_service:0.4.5
+  name: fdobrotv/client_service:0.5.7
   pullPolicy: Never
 app:
   name: client-service
   profile: local
   dbHost: 192.168.49.1 # host gateway (you can reach host machine inside minikube by using this IP address)
+  messageBrokerHost: 192.168.49.1 # host gateway (you can reach host machine inside minikube by using this IP address)
   configurationServiceHost: configuration-service
   tracingServiceHost: tracing-service

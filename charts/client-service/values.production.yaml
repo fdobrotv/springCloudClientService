@@ -2,7 +2,7 @@ replicaCount: 3
 servicePort: 11111
 containerPort: 11111
 image:
-  name: fdobrotv/client_service:0.4.5
+  name: fdobrotv/client_service:0.5.7
   pullPolicy: IfNotPresent
 app:
   name: client-service

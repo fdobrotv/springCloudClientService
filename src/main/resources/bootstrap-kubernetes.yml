@@ -11,6 +11,18 @@ spring:
       retry:
         max-attempts: 60
       token: ffa6f30b-041f-445a-9beb-3b42927fab1a
+    bus:
+      id: ${spring.application.name}:${spring.profiles.active}:${random.uuid}
+      enabled: true
+      refresh:
+        enabled: true
+      env:
+        enabled: true
+    stream:
+      kafka:
+        binder:
+          zkNodes: zookeeper-service
+          brokers: message-broker-service
   sleuth:
     traceId128: true
     sampler:
