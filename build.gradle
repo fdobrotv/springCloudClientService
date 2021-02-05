@@ -32,13 +32,13 @@ ext {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
-	implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	//Registration/discovery service client
-	implementation 'org.springframework.cloud:spring-cloud-kubernetes-client-discovery'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+//	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+//	//Registration/discovery service client
+//	implementation 'org.springframework.cloud:spring-cloud-kubernetes-client-discovery'
+//	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
-	//For legacy support of the bootstrap.yml instead of Vault
-	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+//	//For legacy support of the bootstrap.yml instead of Vault
+//	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
 	//We need to have some embedded container for work continuously
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -49,15 +49,16 @@ dependencies {
 	}
 	implementation 'org.openapitools:jackson-databind-nullable:0.2.0'
 
-	//Spring retry
-	implementation 'org.springframework.retry:spring-retry'
-	implementation 'org.springframework.boot:spring-boot-starter-aop'
+//	//Spring retry
+//	implementation 'org.springframework.retry:spring-retry'
+//	implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 	//Spring reactive
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
 	//DB schema change management
-	implementation 'org.liquibase:liquibase-core:4.2.2'
+//	implementation 'org.liquibase:liquibase-core:4.2.2'
+	implementation 'org.liquibase:liquibase-core:3.10.3'
 	implementation 'org.liquibase:liquibase-groovy-dsl:3.0.0'
 	implementation 'javax.xml.bind:jaxb-api:2.3.1'
 
@@ -67,18 +68,18 @@ dependencies {
 	//Postgres and CockroachDB
 	implementation 'org.postgresql:postgresql:42.2.18'
 
-	//Message bus and config propagation
-	implementation 'org.springframework.cloud:spring-cloud-starter-bus-kafka'
+//	//Message bus and config propagation
+//	implementation 'org.springframework.cloud:spring-cloud-starter-bus-kafka'
 
 	//TODO: Client-side load balancer
 //	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
 
 	//TODO: HTTP client binder inspired by Retrofit, JAXRS-2.0, and WebSocket.
 //	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-
-	//Auto-configuration for distributed tracing
-	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-	implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+//
+//	//Auto-configuration for distributed tracing
+//	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+//	implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
 
 	//Lombok
 	compileOnly 'org.projectlombok:lombok'

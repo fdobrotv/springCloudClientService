@@ -13,7 +13,7 @@ public class InfoRestController {
 
     private static Logger log = LoggerFactory.getLogger(InfoRestController.class);
 
-    @Value("${db.password}")
+//    @Value("${db.password}")
     String password;
 
     @Autowired

@@ -4,39 +4,6 @@ server:
 spring:
   application:
     name: ${APPLICATION_NAME:client-service}
-#  cloud:
-#    kubernetes:
-#      discovery:
-#        enabled: false
-#      enabled: false
-#    config:
-#      discovery:
-#        enabled: true
-#        serviceId: ${CONFIGURATION_SERVICE_ID:configuration-service}
-#      failFast: true
-#      retry:
-#        max-attempts: 60
-#      token: ffa6f30b-041f-445a-9beb-3b42927fab1a
-#    bus:
-#      id: ${spring.application.name}:${spring.profiles.active}:${random.uuid}
-#      enabled: true
-#      refresh:
-#        enabled: true
-#      env:
-#        enabled: true
-#    stream:
-#      kafka:
-#        binder:
-#          zkNodes: zookeeper-service
-#          brokers: message-broker-service
-#  sleuth:
-#    traceId128: true
-#    sampler:
-#      probability: 1.0
-#    opentracing:
-#      enabled: true
-#  zipkin:
-#    base-url: http://${TRACING_SERVICE_HOST:tracing-service-1.com}:9411
   jpa:
     hibernate:
       ddl-auto: none
@@ -64,7 +31,3 @@ eureka:
 logging.level:
   com.fdobrotv: trace
   "liquibase" : info
-
-#Uncomment for Spring Retry debug
-#logging.level:
-#  org.springframework.retry: trace

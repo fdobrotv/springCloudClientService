@@ -8,8 +8,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+//import javax.validation.Valid;
+//import javax.validation.constraints.*;
 
 /**
  * Product
@@ -36,7 +36,7 @@ public class Product   {
   */
   @ApiModelProperty(example = "3afe5b11-152c-46de-963b-8655dbc8602b", readOnly = true, value = "The product identifier")
 
-  @Valid
+//  @Valid
 
   public UUID getId() {
     return id;
@@ -56,9 +56,9 @@ public class Product   {
    * @return name
   */
   @ApiModelProperty(example = "Фрукт", required = true, value = "Название продукта")
-  @NotNull
+//  @NotNull
 
-@Size(min=1) 
+//@Size(min=1)
   public String getName() {
     return name;
   }
@@ -79,8 +79,8 @@ public class Product   {
   */
   @ApiModelProperty(example = "12.15", value = "Product's price")
 
-  @Valid
-@DecimalMin("0")
+//  @Valid
+//@DecimalMin("0")
   public BigDecimal getPrice() {
     return price;
   }
